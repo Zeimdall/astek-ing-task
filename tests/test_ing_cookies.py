@@ -6,6 +6,7 @@ from utils.analytics_cookies import ANALYTICS_COOKIES
 
 def test_ing_cookies():
     with sync_playwright() as p:
+        # 
         for browser_type in [p.chromium, p.firefox, p.webkit]:
             browser = browser_type.launch(headless=True)
             context = browser.new_context()
@@ -13,6 +14,7 @@ def test_ing_cookies():
             page.goto("https://www.ing.pl")
 
             # Wybranie odpowiednich cookies'ów
+            page.get_by_role("button", name="Dostosuj").wait_for(state="visible", timeout=60000)
             page.get_by_role("button", name="Dostosuj").click()
             page.get_by_label("analityczne").check()
             page.get_by_role("button", name="Zaakceptuj zaznaczone").click()
