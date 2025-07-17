@@ -32,7 +32,9 @@ jobs:
           python -m playwright install --with-deps
 
       - name: Run test script
-        run: pytest
+        run: |
+          sudo apt-get install xvfb
+          xvfb-run -a pytest
         env:
           BROWSER: ${{ matrix.browser }}
 

@@ -33,6 +33,9 @@ async def test_ing_cookies():
                     user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
                     locale="pl-PL",
                     timezone_id="Europe/Warsaw",
+                    permissions=["geolocation"],
+                    geolocation={"latitude": 52.2297, "longitude": 21.0122},
+                    viewport={"width": 1600, "height": 900}
                 )
                 
                 page = await context.new_page()
