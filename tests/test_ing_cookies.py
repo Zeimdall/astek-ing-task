@@ -2,6 +2,7 @@ import pytest
 import os
 from assertpy import assert_that
 from playwright.sync_api import sync_playwright
+from playwright_stealth import Stealth
 from utils.analytics_cookies import ANALYTICS_COOKIES
 
 
@@ -10,12 +11,11 @@ def test_ing_cookies():
         # 
         for browser_type in [p.chromium, p.firefox, p.webkit]:
             browser = browser_type.launch(headless=True)
-            context = browser.new_context(
-                locale='pl-PL',
-                geolocation={"longitude": 19.9449799, "latitude": 50.0646501},  # Kraków
-                permissions=["geolocation"]
-            )
+            context = browser.new_context()
             page = context.new_page()
+
+            Stealth().apply_stealth_sync(page)
+
             page.goto("https://www.ing.pl")
 
             if not os.path.exists("artifacts"):
