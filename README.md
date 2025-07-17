@@ -1,7 +1,7 @@
 # ASTEK ING Cookies Task Solution
 
 Repozytorium zawiera zautomatyzowany test weryfikujący wybranie analitycznych ciasteczek.
-W tym celu użyty został język Python oraz framework Playwright.
+W tym celu użyty został język Python oraz framework Playwright, a także biblioteka PyTest w celu łatwiejszego uruchamiania testów (jeśli pojawiłoby się ich w przyszłości więcej).
 
 ## Wymagania
 

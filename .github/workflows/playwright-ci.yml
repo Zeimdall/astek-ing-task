@@ -32,3 +32,10 @@ jobs:
 
       - name: Run test script
         run: pytest
+
+      - name: Upload Playwright screenshots
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-screenshots
+          path: artifacts/

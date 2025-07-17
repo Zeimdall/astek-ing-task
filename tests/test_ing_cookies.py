@@ -1,4 +1,5 @@
 import pytest
+import os
 from assertpy import assert_that
 from playwright.sync_api import sync_playwright
 from utils.analytics_cookies import ANALYTICS_COOKIES
@@ -13,8 +14,13 @@ def test_ing_cookies():
             page = context.new_page()
             page.goto("https://www.ing.pl")
 
+            if not os.path.exists("artifacts"):
+                os.makedirs("artifacts")
+
             # Wybranie odpowiednich cookies'ów
+            page.screenshot(path="artifacts/01_main_page.png")
             page.get_by_role("button", name="Dostosuj").wait_for(state="visible", timeout=60000)
+            page.screenshot(path="artifacts/02_after_trying_to_click_dostosuj.png")
             page.get_by_role("button", name="Dostosuj").click()
             page.get_by_label("analityczne").check()
             page.get_by_role("button", name="Zaakceptuj zaznaczone").click()
