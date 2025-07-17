@@ -11,7 +11,7 @@ W tym celu użyty został język Python oraz framework Playwright, a także bibl
 ## Instalacja
 
 ```bash
-git clone https://github.com/twoj-login/ing-cookie-test.git
+git clone https://github.com/Zeimdall/astek-ing-task.git
 cd ing-cookie-test
 pip install -r requirements.txt
 playwright install
@@ -28,4 +28,4 @@ Specjalnie przygotowany plik yaml o nazwie playwright-ci.yml, który jest pod t�
 
 
 ## Problem z hCaptcha
-Przy próbie puszczania testów z CI/CD napotkałem na problem, że wyświetla się hCaptcha, której nie potrafiłem obejść. Próbowałem wieloma sposobami, niestety z marnym skutkiem. Nie sprawdzałem płatnych rozwiązań, ponieważ nigdy takowych nie używałem i nie chciałem wtopić pieniędzy w coś co nie będzie działało jak należy.
+❗️Uwaga: Ze względu na zabezpieczenia (Incapsula/hCaptcha), test może nie działać w środowiskach CI/CD bez odpowiedniego proxy lub storage_state.
