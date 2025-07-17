@@ -59,6 +59,3 @@ async def test_ing_cookies():
 
     if errors:
         raise AssertionError("Some browsers failed:\n" + "\n".join(errors))
-
-
-asyncio.run(test_ing_cookies())
