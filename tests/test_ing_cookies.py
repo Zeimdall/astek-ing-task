@@ -10,8 +10,7 @@ from utils.analytics_cookies import ANALYTICS_COOKIES
 @pytest.mark.asyncio
 async def test_ing_cookies():
     errors = []
-    stealth = Stealth()
-    async with async_playwright() as p:
+    async with Stealth().use_async(async_playwright()) as p:
         for browser_type in [p.chromium, p.firefox, p.webkit]:
             browser_name = browser_type.name
             browser = None
@@ -19,8 +18,8 @@ async def test_ing_cookies():
                 browser = await browser_type.launch(headless=True)
                 context = await browser.new_context()
                 page = await context.new_page()
-
-                await stealth(page)  # Apply stealth script
+                
+                Stealth().apply_stealth_async(page)
 
                 await page.goto("https://www.ing.pl", timeout=60000)
 
