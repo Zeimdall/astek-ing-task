@@ -21,7 +21,7 @@ async def test_ing_cookies():
             await page.goto("https://www.ing.pl")
 
             # Dynamiczny wait, który pozwala, aby wszystko poprawnie wczytało się na stronie
-            await page.wait_for_load_state("networkidle")
+            await page.wait_for_load_state("networkidle", timeout=60000)
 
             # Wybranie odpowiednich cookies'ów
             await page.get_by_role("button", name="Dostosuj").wait_for(state="visible", timeout=60000)
