@@ -10,7 +10,11 @@ def test_ing_cookies():
         # 
         for browser_type in [p.chromium, p.firefox, p.webkit]:
             browser = browser_type.launch(headless=True)
-            context = browser.new_context()
+            context = browser.new_context(
+                locale='pl-PL',
+                geolocation={"longitude": 19.9449799, "latitude": 50.0646501},  # Kraków
+                permissions=["geolocation"]
+            )
             page = context.new_page()
             page.goto("https://www.ing.pl")
 
