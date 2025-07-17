@@ -34,8 +34,7 @@ async def test_ing_cookies():
                     locale="pl-PL",
                     timezone_id="Europe/Warsaw",
                     permissions=["geolocation"],
-                    geolocation={"latitude": 52.2297, "longitude": 21.0122},
-                    viewport={"width": 1600, "height": 900}
+                    geolocation={"latitude": 52.2297, "longitude": 21.0122}
                 )
                 
                 page = await context.new_page()
@@ -47,6 +46,9 @@ async def test_ing_cookies():
 
                 os.makedirs("artifacts", exist_ok=True)
                 await page.screenshot(path=f"artifacts/screen_no_1_{browser_name}.png")
+                html = await page.content()
+                with open(f"artifacts/failed_{browser_name}.html", "w") as f:
+                    f.write(html)
 
                 # Akceptacja cookies
                 await page.get_by_role("button", name="Dostosuj").wait_for(state="visible", timeout=60000)
