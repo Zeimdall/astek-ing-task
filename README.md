@@ -13,16 +13,26 @@ W tym celu użyty został język Python oraz framework Playwright, a także bibl
 ```bash
 git clone https://github.com/Zeimdall/astek-ing-task.git
 cd ing-cookie-test
+```
+### (Opcjonalnie) Utwórz i aktywuj wirtualne środowisko:
+```bash
+python3 -m venv venv
+source venv/bin/activate   # Linux/macOS
+venv\Scripts\activate      # Windows
+```
+### Zainstaluj zależności:
+
+```bash
 pip install -r requirements.txt
+```
+### Zainstaluj przeglądarki Playwright:
+```bash
 playwright install
 ```
-
-## Uruchomienie testu
-W celu uruchomienia testu lokalnie trzeba wykonać powyższe kroki a natępnie użyć polecenia:
+### Uruchom testy:
 ```bash
 pytest
 ```
-
 ## Puszczanie testów w CI
 Specjalnie przygotowany plik yaml o nazwie playwright-ci.yml, który jest pod tą ścieżką: `.github/workflows/playwright-ci.yml` zawiera wszystko co potrzebne w celu uruchomienia testu.
 
