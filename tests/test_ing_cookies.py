@@ -12,7 +12,7 @@ async def test_ing_cookies():
     async with async_playwright() as p:
         # 
         for browser_type in [p.chromium, p.firefox, p.webkit]:
-            browser = await browser_type.launch(headless=False, slow_mo=100)
+            browser = await browser_type.launch(headless=True)
             context = await browser.new_context()
             page = await context.new_page()
 
