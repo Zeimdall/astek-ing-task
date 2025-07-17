@@ -29,11 +29,15 @@ async def test_ing_cookies():
             browser = None
             try:
                 browser = await browser_type.launch(headless=True)
-                context = await browser.new_context()
-
-                await Stealth().apply_stealth_async(context)
+                context = await browser.new_context(
+                    user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
+                    locale="pl-PL",
+                    timezone_id="Europe/Warsaw",
+                )
                 
                 page = await context.new_page()
+
+                await Stealth().apply_stealth_async(page)
 
                 await page.goto("https://www.ing.pl")
                 await page.wait_for_load_state("load", timeout=60000)
