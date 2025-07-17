@@ -30,19 +30,21 @@ async def test_ing_cookies():
             try:
                 browser = await browser_type.launch(headless=True)
                 context = await browser.new_context()
-                page = await context.new_page()
 
-                await Stealth().apply_stealth_async(page)
+                await Stealth().apply_stealth_async(context)
+                
+                page = await context.new_page()
 
                 await page.goto("https://www.ing.pl")
                 await page.wait_for_load_state("load", timeout=60000)
 
                 os.makedirs("artifacts", exist_ok=True)
                 await page.screenshot(path=f"artifacts/screen_no_1_{browser_name}.png")
-                await page.screenshot(path=f"artifacts/screen_no_2_{browser_name}.png")
 
                 # Akceptacja cookies
                 await page.get_by_role("button", name="Dostosuj").wait_for(state="visible", timeout=60000)
+
+                await page.screenshot(path=f"artifacts/screen_no_1_{browser_name}.png")
                 await page.get_by_role("button", name="Dostosuj").click()
                 await page.get_by_label("analityczne").check()
                 await page.get_by_role("button", name="Zaakceptuj zaznaczone").click()
