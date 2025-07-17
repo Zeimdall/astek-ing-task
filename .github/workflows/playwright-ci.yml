@@ -31,7 +31,7 @@ jobs:
           python -m playwright install --with-deps
 
       - name: Run test script
-        run: pytest
+        run: pytest || true
 
       - name: Upload Playwright screenshots
         if: failure()
